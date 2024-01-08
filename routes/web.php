@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Movie;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
