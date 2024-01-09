@@ -1,5 +1,8 @@
 <?php
 
+use App\Livewire\Counter;
+use App\Livewire\Movies\AddMovie;
+use App\Livewire\Movies\ShowAllMovies;
 use App\Models\Movie;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -18,3 +21,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('counter', Counter::class);
+
+Route::get('counter', Counter::class);
+
+Route::prefix('movies')->group(function(){
+    Route::get('/', ShowAllMovies::class);
+
+    Route::get('/add', AddMovie::class);
+
+    Route::get('/{id}/edit', AddMovie::class);
+});
+

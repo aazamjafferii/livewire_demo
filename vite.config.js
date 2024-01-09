@@ -1,6 +1,8 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 
+const host = 'my-app.test'; 
+
 export default defineConfig({
     plugins: [
         laravel({
@@ -8,4 +10,9 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    server: { 
+        hmr: {
+            host: 'livewire.demo',
+        },
+    }, 
 });
