@@ -9,11 +9,21 @@ class ShowAllMovies extends Component
 {
     public $movies = [];
 
+    public $status;
+
     public function render()
     {
-        $this->movies = Movie::all();
+        $this->movies = $this->getMovies();
 
         return view('livewire.movies.show-all-movies', ['movies' => $this->movies])->extends('layouts.default');
+    }
+
+    public function getMovies(){
+        if( $this->status == null OR $this->status == "" ){
+            return Movie::all();
+        }
+
+        return Movie::where('status', $this->status)->get();
     }
 
     public function watched($id){
@@ -34,5 +44,9 @@ class ShowAllMovies extends Component
 
     public function edit($id){
         return redirect("movies/$id/edit");
+    }
+
+    public function statusChanged(){
+        $this->movies = $this->getMovies();
     }
 }
